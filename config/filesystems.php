@@ -61,6 +61,10 @@ return [
             'region' => 'your-region',
             'bucket' => 'your-bucket',
         ],
+        'imgNoticias' => [
+            'driver' => 'local',
+            'root' => public_path('imgNoticias'),
+        ],
 
     ],
 

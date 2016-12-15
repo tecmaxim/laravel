@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'Noticias@index');
 
 Auth::routes();
 
@@ -21,3 +19,16 @@ Route::get('/home', 'HomeController@index');
 
 // Noticias
 Route::resource('/noticias', 'Noticias');
+
+Route::resource('movie', 'MovieController');
+
+Route::get('pruebas', function(){ return "hola";});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+//New Tuto
+Route::get('cinema', 'FrontController@index');
+Route::get('contacto', 'FrontController@contacto');
+Route::get('reviews', 'FrontController@reviews');
