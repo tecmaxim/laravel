@@ -3,6 +3,7 @@
 namespace MyApLaravel\Http\Controllers;
 
 use Illuminate\Http\Request;
+use MyApLaravel\Http\Requests;
 
 class FrontController extends Controller
 {
@@ -26,6 +27,11 @@ class FrontController extends Controller
     {
         return view('reviews');
     }
+    
+    public function admin()
+    {
+        return view('admin/index');
+    }
 
     /**
      * Display the specified resource.
@@ -46,7 +52,7 @@ class FrontController extends Controller
      */
     public function edit($id)
     {
-        //
+        print_r($id); exit;
     }
 
     /**
@@ -71,4 +77,6 @@ class FrontController extends Controller
     {
         //
     }
+    
+    
 }
