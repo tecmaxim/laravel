@@ -3,14 +3,12 @@
 namespace MyApLaravel\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MyApLaravel\Http\Requests;
+use MyApLaravel\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
+      
 
-class FrontController extends Controller
+class LogController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['only' => 'admin']);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -18,23 +16,34 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('index');
+        //
     }
 
-
-    public function contacto()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        return view('contacto');
+        //
     }
 
-    public function reviews()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        return view('reviews');
-    }
-    
-    public function admin()
-    {
-        return view('admin/index');
+        if(Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])){
+            return redirect('admin');
+        }
+        //flash('message-error','Datos son incorrectos');
+        //return Redirect::to('/');
+        
+        return redirect('/')->with('message-error','Datos son incorrectos');
     }
 
     /**
@@ -56,7 +65,7 @@ class FrontController extends Controller
      */
     public function edit($id)
     {
-        print_r($id); exit;
+        //
     }
 
     /**
@@ -82,5 +91,9 @@ class FrontController extends Controller
         //
     }
     
-    
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 }

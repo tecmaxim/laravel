@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp2/htdocs/blog/app/Http/Controllers/Noticias.php</file>
-            <file>file:/C:/xampp2/htdocs/blog/routes/web.php</file>
-            <file>file:/C:/xampp2/htdocs/blog/resources/views/layouts/formulario.blade.php</file>
+            <file>file:/C:/xampp2/htdocs/blog/resources/views/genere/index.blade.php</file>
+            <file>file:/C:/xampp2/htdocs/blog/public/js/script2.js</file>
+            <file>file:/C:/xampp2/htdocs/blog/resources/views/layouts/admin.blade.php</file>
+            <file>file:/C:/xampp2/htdocs/blog/resources/views/genere/create.blade.php</file>
+            <file>file:/C:/xampp2/htdocs/blog/app/Http/Controllers/GenereController.php</file>
         </group>
     </open-files>
 </project-private>

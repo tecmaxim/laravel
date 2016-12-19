@@ -36,6 +36,16 @@ Route::get('reviews', 'FrontController@reviews');
 Route::get('admin', 'FrontController@admin');
 
 Route::resource('user','UserController');
+Route::resource('log', 'LogController');
+Route::get('logout', 'LogController@logout');
+
+Route::resource('genere', 'GenereController');
+
+//Maxi: Added to perform de code. This way we force the controllers functions only
+//can receive an User Model
+Route::get('user/{user}','UserController@edit');
+Route::get('user/{user}','UserController@delete');
+
     
 // URL dinamica StoreZones
 Route::resource('scaffold_table','Scaffold_tableController'); 
@@ -58,3 +68,4 @@ Route::group(['middleware'=> 'web'],function(){
   Route::get('scaffold_table/{id}/deleteMsg','Scaffold_tableController@DeleteMsg');
 });
 */
+

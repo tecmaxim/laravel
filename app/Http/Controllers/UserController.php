@@ -7,6 +7,11 @@ use MyApLaravel\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('load.user',['only' => ['create', 'edit']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        
+        $users = User::paginate(3);
         return view('user.index',compact('users'));
     }
 
@@ -41,7 +47,12 @@ class UserController extends Controller
                                 'email' => 'required',
                                 'password' => 'required'
                             ]);
-        $user = new User();
+        // Fast create
+        User::create($request->all());
+        return back()->with('message', 'User created!');
+        
+        /*OLD AND CONVENCIONAL METHOD SAVE
+         * $user = new User();
         $user->name = $request->name;
         $user->email  = $request->email;
         $user->password = $request->password;
@@ -51,7 +62,7 @@ class UserController extends Controller
         } catch (Exception $e) {
                 return back()->with('status', $e->getMessage());
         }
-        
+        */
        
     }
 
@@ -67,15 +78,14 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Edited! Maxi
      *
-     * @param  int  $id
+     * @param  user model User
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
-        return view('user.edit',['user'=>$user]);
+        return view('user.edit',['user'=>$user]);            
     }
 
     /**
@@ -104,9 +114,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        User::destroy($id);
+        $user->delete();
         return redirect('/user')->with('message', 'User Deleted!');
     }
 }

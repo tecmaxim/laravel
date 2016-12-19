@@ -3,38 +3,54 @@
 namespace MyApLaravel\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MyApLaravel\Http\Requests;
+use MyApLaravel\Genero;
 
-class FrontController extends Controller
+class GenereController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['only' => 'admin']);
+        $this->middleware('auth');
+        
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('index');
+        if ($request->ajax()) {
+            $genres = Genero::all();
+            print_r($genres); exit;
+            return response()->json($genres);
+        }
+        return view('genere.index');
     }
 
-
-    public function contacto()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        return view('contacto');
+        return view('genere.create');
     }
 
-    public function reviews()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        return view('reviews');
-    }
-    
-    public function admin()
-    {
-        return view('admin/index');
+        if($request->ajax()){
+            Genero::create($request->all());
+            return response()->json([
+                "mensaje" => "creado"
+            ]);
+        }
     }
 
     /**
@@ -56,7 +72,7 @@ class FrontController extends Controller
      */
     public function edit($id)
     {
-        print_r($id); exit;
+        //
     }
 
     /**
@@ -81,6 +97,4 @@ class FrontController extends Controller
     {
         //
     }
-    
-    
 }
