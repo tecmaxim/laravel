@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@include('genere.modal')
 @section('content')
 <div id="msj-success" class="alert alert-success alert-dismissible" role="alert" style="display:none">
   		<strong> Genero Actualizado Correctamente.</strong>
@@ -11,9 +12,10 @@
 			
 			<tbody id="datos"></tbody>
 		</table>
-        @section('script')
-		{!!Html::script('js/script2.js')!!}
-	@endsection
+
+	{!!Html::script('js/script2.js')!!}
+
+        
 @endsection
 
 	

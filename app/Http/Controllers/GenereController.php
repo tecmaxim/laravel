@@ -21,7 +21,7 @@ class GenereController extends Controller
     {
         if ($request->ajax()) {
             $genres = Genero::all();
-            print_r($genres); exit;
+            
             return response()->json($genres);
         }
         return view('genere.index');
@@ -72,7 +72,8 @@ class GenereController extends Controller
      */
     public function edit($id)
     {
-        //
+        $genere = Genero::find($id);
+        return response()->json($genere);
     }
 
     /**
@@ -84,7 +85,11 @@ class GenereController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $genre = Genero::find($id);
+        $genre->fill($request->all());
+        
+        $genre->save();
+        return response()->json(["mensaje" => "listo"]);
     }
 
     /**

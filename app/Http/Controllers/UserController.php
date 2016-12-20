@@ -9,8 +9,8 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('load.user',['only' => ['create', 'edit']]);
+        //$this->middleware('auth');
+        //$this->middleware('load.user',['only' => ['create', 'edit']]);
     }
     /**
      * Display a listing of the resource.

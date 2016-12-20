@@ -9,7 +9,7 @@
         @include('genere.forms.genere')
         {{link_to('#', $title='Registrar', $attributes = ['id'=>'registro', 'class'=>'btn btn-primary'], $secure = null)}}
     {!!Form::close()!!}
-    @section('scripts')
-        {!!Html::script('js/script2.js')!!}
-    @endsection
+    
+    {!!Html::script('js/script.js')!!}
+    
 @endsection

@@ -1,3 +1,4 @@
+
 $("#registro").click(function(){
     var dato = $("#genere").val();
     var route = "http://localhost:8000/genere";
