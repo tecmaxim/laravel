@@ -4,6 +4,7 @@ namespace MyApLaravel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use MyApLaravel\User;
+use Yajra\Datatables\Facades\Datatables;
 
 class UserController extends Controller
 {
@@ -22,6 +23,20 @@ class UserController extends Controller
         
         $users = User::paginate(3);
         return view('user.index',compact('users'));
+    }
+    
+    public function index2()
+    {
+        
+        //$users = User::find();
+        return view('user.index2');
+    }
+    
+    public function getdata()
+    {
+        
+        return Datatables::eloquent(User::query())->make(true);
+        
     }
 
     /**

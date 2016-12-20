@@ -16,7 +16,7 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
+Route::get('/', 'HomeController@index');
 // Noticias - 1º Tuto
 Route::resource('/noticias', 'Noticias');
 
@@ -29,6 +29,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 //2º Tuto
+
 Route::get('/', 'FrontController@index');
 Route::get('cinema', 'FrontController@index');
 Route::get('contacto', 'FrontController@contacto');
@@ -45,6 +46,10 @@ Route::resource('genere', 'GenereController');
 //can receive an User Model
 Route::get('user/{user}','UserController@edit');
 Route::get('user/{user}','UserController@delete');
+
+Route::get('users','UserController@index2');
+
+Route::get('users/getdata','UserController@getdata');
 
     
 // URL dinamica StoreZones

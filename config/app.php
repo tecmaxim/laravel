@@ -167,6 +167,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Vinkla\Pusher\PusherServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -233,6 +234,8 @@ return [
         //LARAVELCOLLECTIVE
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        //Datatable Js
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 
     ],
 
